@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <title>Voor mama ❤️</title>
 
-  <!-- BELANGRIJK VOOR GSM -->
+  <!-- GSM-proof -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
-      background-color: #fff6f6;
+      background: linear-gradient(180deg, #fff1e6, #fde2e2);
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 20px;
@@ -17,7 +17,7 @@
     }
 
     h1 {
-      color: #b03030;
+      color: #a12b2b;
       margin-bottom: 20px;
       font-size: 1.8rem;
     }
@@ -26,13 +26,19 @@
       width: 100%;
       max-width: 360px;
       border-radius: 20px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
       margin-bottom: 20px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .foto:active {
+      transform: scale(0.98);
     }
 
     .tekst {
       font-size: 1rem;
-      color: #555;
+      color: #6a4a4a;
       margin-bottom: 12px;
     }
 
@@ -41,13 +47,30 @@
       max-width: 360px;
       height: 40px;
     }
+
+    /* FULLSCREEN MODAL */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .overlay img {
+      max-width: 95%;
+      max-height: 95%;
+      border-radius: 12px;
+    }
   </style>
 </head>
 <body>
 
   <h1>Voor jou, mama ❤️</h1>
 
-  <img src="iris50.jpg" alt="Mama als kind" class="foto">
+  <img src="iris50.jpg" alt="Mama als kind" class="foto" onclick="openFoto()">
 
   <div class="tekst">Druk op play, draai de volumeknop HELEMAAL OPEN en geniet 💕</div>
 
@@ -55,6 +78,20 @@
     <source src="Iris 50 jaar!.mp3" type="audio/mpeg">
     Je browser ondersteunt geen audio.
   </audio>
+
+  <!-- FULLSCREEN FOTO -->
+  <div class="overlay" id="overlay" onclick="closeFoto()">
+    <img src="mama-klein.jpg" alt="Volledig scherm">
+  </div>
+
+  <script>
+    function openFoto() {
+      document.getElementById('overlay').style.display = 'flex';
+    }
+    function closeFoto() {
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script>
 
 </body>
 </html>
